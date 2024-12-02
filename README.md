@@ -24,11 +24,12 @@ This project integrates with Spotify's API and Google Apps Script to track your 
     - Function: `sendMonthlyTopTracksEmail` | Event: "Time-driven" | Type: "Month timer" | Day of the month: "1" | Hour: "00-01" (You can choose any day and time you prefer).  
     - Function: `sendWeeklyTopTracksEmail` | Event: "Time-driven" | Type: "Week timer" | Day of the week: "Sunday" | Hour: "21-22" (You can customize the day and time).  
     - Function: `saveRecentlyPlayedTracks` | Event: "Time-driven" | Type: "Hourly timer" | Interval: "Every hour" (This saves recently played tracks to the spreadsheet).
+    - Function: `sendYearlyTopTracksEmail` | Event: "Time-driven" | Type: "Date-Hour TImer" | Day-Hour: "31/12 23:00" (You can customize the day and time).  
 14. Don't forget to fill the auth.gs constants with the required data
 
 ## To do:
-- Create an annual summary (in development)
-- Improve the visualization of the information in the mails
-- Create a website to visualize the data(?
+- [x] Create an annual summary
+- [ ] Improve the visualization of the information in the mails
+- [ ] Create a website to visualize the data(?
 
 #### Any comments or suggestions are welcome. The application may have bugs, please report them. 
