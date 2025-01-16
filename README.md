@@ -21,14 +21,16 @@ This project integrates with Spotify's API and Google Apps Script to track your 
 12. Create a spreadsheet in your Google Drive and copy its ID (from the URL: `https://docs.google.com/spreadsheets/d/[SPREADSHEET_ID]/edit`) into the `SPREADSHEET_ID` variable in your script.  
 
 13. In the "Triggers" tab, create the following:  
-    - Function: `sendMonthlyTopTracksEmail` | Event: "Time-driven" | Type: "Month timer" | Day of the month: "1" | Hour: "00-01" (You can choose any day and time you prefer).  
-    - Function: `sendWeeklyTopTracksEmail` | Event: "Time-driven" | Type: "Week timer" | Day of the week: "Sunday" | Hour: "21-22" (You can customize the day and time).  
+    - Function: `sendMonthlyTopTracksEmail` | Event: "Time-driven" | Type: "Month timer" | Day of the month: "31" | Hour: "23-00" (You can choose any day and time you prefer).  
+    - Function: `sendWeeklyTopTracksEmail` | Event: "Time-driven" | Type: "Week timer" | Day of the week: "Sunday" | Hour: "23-00" (You can customize the day and time).  
     - Function: `saveRecentlyPlayedTracks` | Event: "Time-driven" | Type: "Hourly timer" | Interval: "Every hour" (This saves recently played tracks to the spreadsheet).
-    - Function: `sendYearlyTopTracksEmail` | Event: "Time-driven" | Type: "Date-Hour TImer" | Day-Hour: "31/12 23:00" (You can customize the day and time).  
+    - Function: `sendYearlyTopTracksEmail` | Event: "Time-driven" | Type: "Date-Hour TImer" | Day-Hour: "31/12 23:00" (You can customize the day and time).
+      *Due to the limitations of Google Apps Script, annual summary cannot be automated and must be entered/executed by hand on a year-to-year basis.*
 14. Don't forget to fill the auth.gs constants with the required data
 
 ## To do:
 - [x] Create an annual summary
+- [ ] Improvement of the annual summary: e.g. include monthly tops 
 - [ ] Improve the visualization of the information in the mails
 - [ ] Create a website to visualize the data(?
 
