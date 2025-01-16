@@ -99,7 +99,7 @@ function sendMonthlyTopTracksEmail() {
   const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-  sendEmail(`Top 50 ${monthNames[currentDate.getMonth()-1]}-${currentDate.getFullYear()}`, emailBody, inlineImages);
+  sendEmail(`Top 50 ${monthNames[currentDate.getMonth()]}-${currentDate.getFullYear()}`, emailBody, inlineImages);
 
   createMonthlyPlaylist(topTracks);
 }
@@ -175,10 +175,10 @@ function sendYearlyTopTracksEmail() {
       }
     });
 
-    const currentDate = new Date();
+    /*const currentDate = new Date();
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-  /*
+  
     //Top 1 cancion por mes
     for(var i = 1; i < 13; i++){
       var topTracksMes = getTopTracks(1, 'custom', i);

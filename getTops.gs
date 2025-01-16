@@ -1,6 +1,3 @@
-
-
-
 function getTopArtists(number, timeAgo){
 
   // Cambia 'URL_DEL_ARCHIVO_EXCEL' por la URL de tu archivo de Excel
@@ -42,6 +39,7 @@ function getTopArtists(number, timeAgo){
 function getTopTracks(number, type, mes){
   saveRecentlyPlayedTracks();
   ordenarPorFecha();
+  compareAndCleanRows() 
 
   const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
 

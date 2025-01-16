@@ -67,3 +67,48 @@ function ordenarPorFecha() {
 
   range.sort([{column: columnToSortBy, ascending: false}]); // Ordenar por la columna de fechas de forma descendente
 }
+
+function compareAndCleanRows() {
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
+    const data = sheet.getDataRange().getValues();
+    const headers = data[0];
+    
+    const timeCol = headers.indexOf("time");
+    const songCol = headers.indexOf("id");
+    const durationCol = headers.indexOf("duration");
+
+    if (timeCol === -1 || songCol === -1 || durationCol === -1) {
+      throw new Error("Las columnas 'Time', 'Cancion' o 'Duracion' no existen en la hoja.");
+    }
+
+    // Convertir Time a formato de tiempo (milisegundos desde epoch)
+    for (let i = 1; i < data.length; i++) {
+      if (typeof data[i][timeCol] === 'string') {
+        data[i][timeCol] = new Date(data[i][timeCol]).getTime();
+      }
+    }
+
+    // Iterar sobre las filas para comparar y eliminar según las condiciones
+    const numRowsToCheck = Math.min(data.length - 1, 1000);
+    let rowsToDelete = [];
+    for (let i = 1; i < numRowsToCheck; i++) {
+      const time1 = data[i][timeCol];
+      const song1 = data[i][songCol];
+      const duration1 = data[i][durationCol];
+
+      const time2 = data[i + 1][timeCol];
+      const song2 = data[i + 1][songCol];
+      const duration2 = data[i + 1][durationCol];
+
+      if (song1 === song2 && (time1 - time2) > duration2 * 2) {
+        rowsToDelete.push(i + 1); // La fila en la hoja comienza desde 1 y no desde 0
+      }
+    }
+
+    // Eliminar las filas desde el final para evitar problemas de reindexación
+    rowsToDelete.reverse().forEach(row => {
+      sheet.deleteRow(row);
+    });
+
+    Logger.log(`Se han eliminado ${rowsToDelete.length} filas.`);
+  }

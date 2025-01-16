@@ -1,10 +1,6 @@
-
-
 function createPlaylist(topTracks, name) {
     const accessToken = PropertiesService.getScriptProperties().getProperty('access_token');
 
-    
-  
     // Crear la playlist
     const createPlaylistResponse = UrlFetchApp.fetch(`https://api.spotify.com/v1/users/${USER_ID}/playlists`, {
       method: 'post',
@@ -44,7 +40,7 @@ function createPlaylist(topTracks, name) {
     const currentDate = new Date();
     const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    const playlistName = `${monthNames[currentDate.getMonth()-1]} ${currentDate.getFullYear()} vibes`;
+    const playlistName = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()} vibes`;
     createPlaylist(topTracks, playlistName);
   }
 
