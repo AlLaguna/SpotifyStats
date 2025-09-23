@@ -32,7 +32,7 @@ This project integrates with Spotify's API and Google Apps Script to track your 
 - [x] Create an annual summary
 - [ ] Improvement of the annual summary: e.g. include monthly tops 
 - [ ] Improve the visualization of the information in the mails
-- [ ] Create a website to visualize the data
+- [ ] <ins>Create a website to visualize the data (*currently developed, improving performance and testing it*)</ins>
 - [ ] Create caches to reduce API calls
 - [ ] Create a pre-aggregated data table to improve efficiency in retrieving stats
 
