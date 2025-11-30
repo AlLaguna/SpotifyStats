@@ -36,6 +36,7 @@ This project integrates with Spotify's API and Google Apps Script to track your 
 <img width="2201" height="944" alt="imagen" src="https://github.com/user-attachments/assets/9a5c2598-2fa5-494f-b871-5dfa5a1cb040" />
 
 - [ ] Create caches to reduce API calls
+    - [x] Added image cache for songs, albums and artists      
 - [ ] Create a pre-aggregated data table to improve efficiency in retrieving stats
 
 #### Any comments or suggestions are welcome. The application may have bugs, please report them. 
