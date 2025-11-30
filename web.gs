@@ -1,3 +1,4 @@
+// Code.gs
 function doGet() {
   return HtmlService.createTemplateFromFile('index')
     .evaluate()
@@ -15,7 +16,7 @@ function getWeeklySongs() {
 
 function getWeeklyArtists() {
   let today = new Date();
-  const data = getTopArtists(50, new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7));
+  const data = getTopArtists(50, 'semana');
   return {
     items: processArtists(data),
   };
@@ -31,12 +32,13 @@ function getMonthlySongs() {
 
 function getMonthlyArtists() {
   let today = new Date();
-  const data = getTopArtists(50, new Date(today.getFullYear(), today.getMonth()-1, today.getDate()));
+  const data = getTopArtists(50, 'mes');
   return {
     items: processArtists(data),
   };
 }
 
+// Shared processing functions
 function processSongs(tracks) {
   return tracks.map(track => ({
     name: track.name,
