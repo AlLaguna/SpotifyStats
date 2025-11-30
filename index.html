@@ -182,27 +182,27 @@
         loader.style.display = 'block';
         updateProgress(0);
         setupTabHandlers();
-        //weekly songs first
+        // Load weekly songs first
         cachedData.weekly.songs = await promisifiedServerCall('getWeeklySongs');
         populateSection('weekly-songs', cachedData.weekly.songs, 'songs');
         updateProgress(25);
         loader.style.display = 'none';
-        //weekly artists
+        // Then weekly artists
         cachedData.weekly.artists = await promisifiedServerCall('getWeeklyArtists');
         populateSection('weekly-artists', cachedData.weekly.artists, 'artists');
         updateProgress(50);
         loader.style.display = 'none';
-        //monthly songs
+        // Then monthly songs
         cachedData.monthly.songs = await promisifiedServerCall('getMonthlySongs');
         populateSection('monthly-songs', cachedData.monthly.songs, 'songs');
         updateProgress(75);
         loader.style.display = 'none';  
-        //monthly artists
+        // Finally monthly artists
         cachedData.monthly.artists = await promisifiedServerCall('getMonthlyArtists');
         populateSection('monthly-artists', cachedData.monthly.artists, 'artists');
         updateProgress(100);
         loader.style.display = 'none';
-        //setupTabHandlers();
+        setupTabHandlers();
       } catch (error) {
         showError(error);
       } finally {
